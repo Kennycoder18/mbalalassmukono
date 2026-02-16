@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>School registration · extended (health + attachments)</title>
+  <!-- Google Font for clean, modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .school-pro-reg {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: transparent;
+      color: #1e2f40;
+      line-height: 1.5;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .form-card {
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 30, 60, 0.25);
+      padding: 2rem 2.2rem;
+      border: 1px solid #e6edf4;
+    }
+
+    /* headings */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #113355;
+      margin: 1.8rem 0 1.2rem 0;
+      border-bottom: 3px solid #cbddee;
+      padding-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title:first-of-type {
+      margin-top: 0.2rem;
+    }
+    .section-title i {
+      font-style: normal;
+      font-size: 1.7rem;
+    }
+
+    .subheading {
+      font-weight: 600;
+      color: #204b6b;
+      margin: 1.2rem 0 0.8rem 0;
+      font-size: 1.2rem;
+      padding-left: 0.25rem;
+    }
+
+    /* grid system */
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem 1.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-item label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #2d4e6e;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .form-item input,
+    .form-item select,
+    .form-item textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      padding: 0.75rem 1rem;
+      background: #f9fcff;
+      border: 1.5px solid #dae6f2;
+      border-radius: 18px;
+      transition: 0.15s;
+      width: 100%;
+      outline: none;
+      color: #0f2b3f;
+    }
+
+    .form-item input:focus,
+    .form-item select:focus,
+    .form-item textarea:focus {
+      border-color: #2a7fcc;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(42, 127, 204, 0.1);
+    }
+
+    /* small hints */
+    .field-hint {
+      font-size: 0.75rem;
+      color: #678aa8;
+      margin-left: 0.3rem;
+    }
+
+    /* from-to group inside previous school */
+    .from-to-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+    .from-to-group .form-item {
+      flex: 1 1 130px;
+    }
+
+    /* subject grids (for UCE) */
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 1rem 1.5rem;
+      background: #f5faff;
+      padding: 1.5rem 1.8rem;
+      border-radius: 28px;
+      margin: 0.5rem 0 1rem 0;
+      border: 1px solid #d3e4f5;
+    }
+
+    .subject-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .subject-item label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1f4b70;
+    }
+    .subject-item input {
+      padding: 0.6rem 0.8rem;
+      border-radius: 30px;
+      border: 1.5px solid #c5d9ec;
+      background: white;
+    }
+
+    /* attachments / file area */
+    .attachment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .attachment-card {
+      background: #f1f7fd;
+      border-radius: 24px;
+      padding: 1.2rem 1.2rem 1.5rem;
+      border: 2px dashed #b5cfeb;
+      text-align: center;
+    }
+    .attachment-card label {
+      font-weight: 600;
+      color: #1b4f7a;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .attachment-card input[type="file"] {
+      font-size: 0.85rem;
+      padding: 0.5rem 0;
+      width: 100%;
+    }
+
+    /* health section special */
+    .health-contact-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      background: #f1f7fc;
+      border-radius: 30px;
+      padding: 1.5rem 1.8rem;
+      margin: 1rem 0;
+      border: 1px solid #c9ddee;
+    }
+
+    /* club options */
+    .club-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      background: #f3f9ff;
+      padding: 1.3rem 2rem;
+      border-radius: 50px;
+      margin: 0.8rem 0;
+    }
+    .club-check {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .club-check input {
+      width: 1.2rem;
+      height: 1.2rem;
+      accent-color: #1f6cb0;
+    }
+
+    /* terms & submit */
+    .terms-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: #e8f0fe;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      margin: 2rem 0 0.8rem;
+    }
+    .agree-check {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .agree-check input {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+    .btn-submit {
+      background: #165a9c;
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 0.9rem 2.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      box-shadow: 0 12px 24px -12px #165a9c;
+      transition: background 0.15s;
+    }
+    .btn-submit:hover {
+      background: #0d4173;
+    }
+
+    /* mobile tweaks */
+    @media (max-width: 700px) {
+      .form-card { padding: 1.5rem; }
+      .subject-grid { padding: 1rem; }
+      .club-options { border-radius: 30px; padding: 1rem; }
+      .terms-bar { flex-direction: column; gap: 1rem; align-items: stretch; }
+      .btn-submit { justify-content: center; }
+    }
+
+    /* misc */
+    hr {
+      border: 1px solid #cfe0ef;
+      margin: 1.2rem 0;
+    }
+    .inline-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- =============================================================== -->
+  <!--  PLUGIN BLOCK: COPY EVERYTHING INSIDE school-pro-reg wrapper   -->
+  <!-- =============================================================== -->
+  <div class="school-pro-reg">
+    <div class="form-card">
+      <form onsubmit="event.preventDefault(); alert('Demo: form data would be processed.')">
+
+        <!-- ============ 1. APPLICANT BIODATA ============ -->
+        <div class="section-title"><i>👤</i> Applicant biodata</div>
+        <div class="form-row">
+          <div class="form-item"><label>First name *</label><input type="text" placeholder="e.g. Aisha" required></div>
+          <div class="form-item"><label>Last name *</label><input type="text" placeholder="e.g. Nakato" required></div>
+          <div class="form-item"><label>Nationality</label><input type="text" value="Ugandan" placeholder=""></div>
+          <div class="form-item"><label>District of origin</label><input type="text" placeholder="e.g. Kampala"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-item"><label>Region</label>
+            <select><option>Central</option><option>Eastern</option><option>Northern</option><option>Western</option></select>
+          </div>
+          <div class="form-item"><label>Class applying for *</label>
+            <select required><option>S.1</option><option>S.2</option><option>S.3</option><option>S.4</option><option>S.5</option><option>S.6</option></select>
+          </div>
+          <div class="form-item"><label>Boarding / Day</label>
+            <select><option>Boarding</option><option>Day</option><option>Flexi (day/boarding)</option></select>
+          </div>
+        </div>
+
+        <!-- ============ 2. PREVIOUS SCHOOL RECORDS ============ -->
+        <div class="section-title"><i>🏫</i> Previous school records</div>
+        <div class="form-row">
+          <div class="form-item"><label>Primary school name</label><input placeholder="e.g. Kampala Junior"></div>
+        </div>
+        <div class="from-to-group form-row">
+          <div class="form-item"><label>From (year)</label><input type="text" placeholder="2018"></div>
+          <div class="form-item"><label>To (year)</label><input type="text" placeholder="2023"></div>
+          <div class="form-item"><label>Next school name (if any)</label><input placeholder="e.g. Lubiri SS"></div>
+        </div>
+
+        <!-- ============ 3. PLE RESULTS ============ -->
+        <div class="section-title"><i>📘</i> Primary Leaving Examination (PLE)</div>
+        <div class="form-row">
+          <div class="form-item"><label>Maths</label><input placeholder="e.g. 1 (D1)"></div>
+          <div class="form-item"><label>English</label><input placeholder="grade"></div>
+          <div class="form-item"><label>Science</label><input placeholder="grade"></div>
+          <div class="form-item"><label>Social Studies</label><input placeholder="grade"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-item"><label>Total aggregates</label><input placeholder="e.g. 12"></div>
+          <div class="form-item"><label>Division</label><input placeholder="e.g. 1, 2, ..."></div>
+        </div>
+
+        <!-- ============ 4. UCE RESULTS (with year + extended subjects) ============ -->
+        <div class="section-title"><i>📚</i> UCE results (O’Level)</div>
+        <div class="form-row">
+          <div class="form-item"><label>Year of examination</label><input type="text" placeholder="2024"></div>
+        </div>
+        <div class="subject-grid">
+          <div class="subject-item"><label>English</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>French</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Mathematics</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>CRE</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>IRE</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Biology</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Physics</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Chemistry</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Agriculture</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Commerce</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Geography</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>History</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Literature</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Luganda</label><input placeholder="grade"></div>
+          <div class="subject-item"><label>Art & design</label><input placeholder="grade"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-item"><label>Total aggregate (UCE)</label><input placeholder="e.g. 18"></div>
+        </div>
+
+        <!-- ============ 5. A' LEVEL COMBINATION ============ -->
+        <div class="section-title"><i>🧪</i> A' Level subject combination</div>
+        <div class="form-row">
+          <div class="form-item"><label>Subject 1 (main)</label><input placeholder="e.g. Physics"></div>
+          <div class="form-item"><label>Subject 2</label><input placeholder="e.g. Chemistry"></div>
+          <div class="form-item"><label>Subject 3</label><input placeholder="e.g. Mathematics"></div>
+          <div class="form-item"><label>Subsidiary / general</label><input placeholder="e.g. Sub ICT / GP"></div>
+        </div>
+
+        <!-- ============ 6. SCHOOL CLUBS & CO-CURRICULAR ============ -->
+        <div class="section-title"><i>⚽</i> Co-curricular & clubs</div>
+        <div class="club-options">
+          <label class="club-check"><input type="checkbox"> Special interest (academic clubs)</label>
+          <label class="club-check"><input type="checkbox"> Games & sports</label>
+          <label class="club-check"><input type="checkbox"> Music, dance & drama</label>
+          <label class="club-check"><input type="checkbox"> Debate / journalism</label>
+        </div>
+        <div class="form-item">
+          <label>Other activities (specify)</label>
+          <input placeholder="e.g. chess, scouting">
+        </div>
+
+        <!-- ============ 7. HEALTH DATA & PARENT CONTACT ============ -->
+        <div class="section-title"><i>🩺</i> Health & parent/guardian details</div>
+        <div class="form-item">
+          <label>Any illness / special attention needed?</label>
+          <textarea rows="2" placeholder="e.g. asthma, allergies, regular medication..."></textarea>
+        </div>
+
+        <div class="health-contact-row">
+          <div class="form-item"><label>Parent/guardian full name</label><input placeholder="as on ID"></div>
+          <div class="form-item"><label>Relationship to applicant</label><input placeholder="mother/father/guardian"></div>
+          <div class="form-item"><label>Parent’s address</label><input placeholder="village, LC, parish"></div>
+          <div class="form-item"><label>Location (landmark)</label><input placeholder="near ..."></div>
+          <div class="form-item"><label>Place of work</label><input placeholder="organisation"></div>
+          <div class="form-item"><label>Occupation / responsibility</label><input placeholder="e.g. teacher, farmer"></div>
+          <div class="form-item"><label>Phone (parent)</label><input type="tel" placeholder="+256 ..."></div>
+          <div class="form-item"><label>Alternative contact</label><input placeholder="other phone / email"></div>
+        </div>
+
+        <!-- ============ 8. IMAGE ATTACHMENTS ============ -->
+        <div class="section-title"><i>📎</i> Document uploads (images / scans)</div>
+        <div class="attachment-grid">
+          <div class="attachment-card">
+            <label>📸 Passport slip photo</label>
+            <input type="file" accept="image/*">
+          </div>
+          <div class="attachment-card">
+            <label>📄 Report card (Term 1)</label>
+            <input type="file" accept="image/*,application/pdf">
+          </div>
+          <div class="attachment-card">
+            <label>📄 Report card (Term 2)</label>
+            <input type="file" accept="image/*,application/pdf">
+          </div>
+          <div class="attachment-card">
+            <label>📄 Report card (Term 3)</label>
+            <input type="file" accept="image/*,application/pdf">
+          </div>
+        </div>
+
+        <!-- terms & submit -->
+        <div class="terms-bar">
+          <label class="agree-check">
+            <input type="checkbox" required> I confirm the information provided is true and complete.
+          </label>
+          <button type="submit" class="btn-submit"><span>✍️</span> Submit registration</button>
+        </div>
+        <div style="font-size:0.8rem; color:#6082a0; text-align:center;">All sections are demo — no data leaves the form.</div>
+      </form>
+    </div> <!-- end form-card -->
+  </div> <!-- end school-pro-reg -->
+  <!-- =================== END OF PLUGIN BLOCK =================== -->
+</body>
+</html>

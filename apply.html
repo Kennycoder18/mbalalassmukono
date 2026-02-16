@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mbalala Senior Secondary School Mukono | Educatio is your Master key</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/apply.css">
+    <link rel="stylesheet" href="master/apply-master.css">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-info">
+                    <i class="fas fa-location-dot"></i> 5km Kampala-Jinja Highway, Mukono |
+                    <i class="fas fa-envelope"></i> mbalalassmukono@gmail.com |
+                    <i class="fas fa-phone-alt"></i> (256) 776-305-962, (256) 704-288-860 | 
+                </div>
+                <div class="header-top-links">
+                    <a href="#"><i class="fab fa-whatsapp"></i> </a>
+                    <a href="#"><i class="fab fa-facebook-f"></i> </a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="Mbalalassmukono_banner (1).png" alt="">
+                    </div>
+                    <div class="logo-container">
+                        <div class="logo-text">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="main-nav">
+                        <nav>
+                            <ul class="nav-links">
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="about.html">AboutUs</a></li>
+                                <li><a href="admission.html">Admissions</a></li>
+                                <li><a href="academics.html">Academics</a></li>
+                                <li><a href="apply.html" class="active">OnlineApplication</a></li>
+                                <li><a href="contact.html">ContactUs</a></li>
+                            </ul>
+                        </nav>
+                        
+                        <div class="mobile-toggle" id="mobileToggle">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <img src="budge.png" alt="Mbalala Senior Secondary School Mukono">
+            <button class="close-modal" id="closeMobileNav">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> AboutUs</a></li>
+            <li><a href="admission.html"><i class="fas fa-user-graduate"></i> Admissions</a></li>
+            <li><a href="academics.html"><i class="fas fa-book"></i> Academics</a></li>
+            <li><a href="apply.html" class="active"><i class="fas fa-newspaper"></i> OnlineApplication</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone-alt"></i> ContactUs</a></li>
+        </ul>
+        <div class="contact-info">
+            <li style="color: rgb(73, 73, 73);font-weight: 500;"><i class="fas fa-phone-alt" style="color: dodgerblue;"></i> (256) 776-305-962, (256) 757-188-848</li>
+            <li style="color: rgb(73, 73, 73);font-weight: 500;"><i class="fas fa-envelope" style="color: dodgerblue;"></i> mbalalassmukono@gmail.com</li>
+            <li style="color: rgb(73, 73, 73);font-weight: 500;"><i class="fas fa-map-marker-alt" style="color: dodgerblue;"></i> 5km Kampala-Jinja Highway, Mukono </li>
+        </div>
+    </div>
+
+    <section class="application-form-intro">
+        
+        <div class="school-pro-reg">
+            <div class="form-card">
+                <form onsubmit="event.preventDefault(); alert('Demo: form data would be processed.')">
+        
+                <!-- ============ 1. APPLICANT BIODATA ============ -->
+                <div class="section-title"><i class="fas fa-user"></i> Student's info</div>
+                <div class="form-row">
+                    <div class="form-item"><label>First name </label><input type="text" placeholder="e.g. Aisha" required></div>
+                    <div class="form-item"><label>Last name </label><input type="text" placeholder="e.g. Nakato" required></div>
+                    <div class="form-item"><label>Nationality</label><input type="text" value="Ugandan" placeholder=""></div>
+                    <div class="form-item"><label>District of origin</label><input type="text" placeholder="e.g. Kampala"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-item"><label>Region</label>
+                    <select><option>Central</option><option>Eastern</option><option>Northern</option><option>Western</option></select>
+                    </div>
+                    <div class="form-item"><label>Class applying for </label>
+                    <select required><option>S.1</option><option>S.2</option><option>S.3</option><option>S.4</option><option>S.5</option><option>S.6</option></select>
+                    </div>
+                    <div class="form-item"><label>Boarding / Day</label>
+                    <select><option>Boarding</option><option>Day</option><option>Flexi (day/boarding)</option></select>
+                    </div>
+                </div>
+        
+                <!-- ============ 2. PREVIOUS SCHOOL RECORDS ============ -->
+                <div class="section-title"><i class="fas fa-school"></i> Previous school records</div>
+                <div class="form-row">
+                    <div class="form-item"><label>Primary school name</label><input placeholder="e.g. Kampala Junior"></div>
+                </div>
+                <div class="from-to-group form-row">
+                    <div class="form-item"><label>From (year)</label><input type="text" placeholder="2018"></div>
+                    <div class="form-item"><label>To (year)</label><input type="text" placeholder="2023"></div>
+                    <div class="form-item"><label>Next school name (if any)</label><input placeholder="e.g. Lubiri SS"></div>
+                </div>
+        
+                <!-- ============ 3. PLE RESULTS ============ -->
+                <div class="section-title"><i class="fas fa-book"></i> Primary Leaving Examination (PLE)</div>
+                <div class="form-row">
+                    <div class="form-item"><label>Maths</label><input placeholder="e.g. 1 (D1)"></div>
+                    <div class="form-item"><label>English</label><input placeholder="grade"></div>
+                    <div class="form-item"><label>Science</label><input placeholder="grade"></div>
+                    <div class="form-item"><label>Social Studies</label><input placeholder="grade"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-item"><label>Total aggregates</label><input placeholder="e.g. 12"></div>
+                    <div class="form-item"><label>Division</label><input placeholder="e.g. 1, 2, ..."></div>
+                </div>
+        
+                <!-- ============ 4. UCE RESULTS (with year + extended subjects) ============ -->
+                <div class="section-title"><i class="fas fa-book"></i> UCE results (O’Level)</div>
+                <div class="form-row">
+                    <div class="form-item"><label>Year of examination</label><input type="text" placeholder="2024"></div>
+                </div>
+                <div class="subject-grid">
+                    <div class="subject-item"><label>English</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>French</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Mathematics</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>CRE</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>IRE</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Biology</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Physics</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Chemistry</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Agriculture</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Commerce</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Geography</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>History</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Literature</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Luganda</label><input placeholder="grade"></div>
+                    <div class="subject-item"><label>Art & design</label><input placeholder="grade"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-item"><label>Total aggregate (UCE)</label><input placeholder="e.g. 18"></div>
+                </div>
+        
+                <!-- ============ 5. A' LEVEL COMBINATION ============ -->
+                <div class="section-title"><i class="fas fa-book"></i> A' Level subject combination</div>
+                <div class="form-row">
+                    <div class="form-item"><label>Subject 1 (main)</label><input placeholder="e.g. Physics"></div>
+                    <div class="form-item"><label>Subject 2</label><input placeholder="e.g. Chemistry"></div>
+                    <div class="form-item"><label>Subject 3</label><input placeholder="e.g. Mathematics"></div>
+                    <div class="form-item"><label>Subsidiary / general</label><input placeholder="e.g. Sub ICT / GP"></div>
+                </div>
+        
+                <!-- ============ 6. SCHOOL CLUBS & CO-CURRICULAR ============ -->
+                <div class="section-title"><i class="fas fa-users"></i> Co-curricular & clubs</div>
+                <div class="club-options">
+                    <label class="club-check"><input type="checkbox"> Special interest (academic clubs)</label>
+                    <label class="club-check"><input type="checkbox"> Games & sports</label>
+                    <label class="club-check"><input type="checkbox"> Music, dance & drama</label>
+                    <label class="club-check"><input type="checkbox"> Debate / journalism</label>
+                </div>
+                <div class="form-item">
+                    <label>Other activities (specify)</label>
+                    <input placeholder="e.g. chess, scouting">
+                </div>
+        
+                <!-- ============ 7. HEALTH DATA & PARENT CONTACT ============ -->
+                <div class="section-title"><i>🩺</i> Health & parent/guardian details</div>
+                <div class="form-item">
+                    <label>Any illness / special attention needed?</label>
+                    <textarea rows="2" placeholder="e.g. asthma, allergies, regular medication..."></textarea>
+                </div>
+        
+                <div class="health-contact-row">
+                    <div class="form-item"><label>Parent/guardian full name</label><input placeholder="as on ID"></div>
+                    <div class="form-item"><label>Relationship to applicant</label><input placeholder="mother/father/guardian"></div>
+                    <div class="form-item"><label>Parent’s address</label><input placeholder="village, LC, parish"></div>
+                    <div class="form-item"><label>Location (landmark)</label><input placeholder="near ..."></div>
+                    <div class="form-item"><label>Place of work</label><input placeholder="organisation"></div>
+                    <div class="form-item"><label>Occupation / responsibility</label><input placeholder="e.g. teacher, farmer"></div>
+                    <div class="form-item"><label>Phone (parent)</label><input type="tel" placeholder="+256 ..."></div>
+                    <div class="form-item"><label>Alternative contact</label><input placeholder="other phone / email"></div>
+                </div>
+        
+                <!-- ============ 8. IMAGE ATTACHMENTS ============ -->
+                <div class="section-title"><i>📎</i> Document uploads (images / scans)</div>
+                <div class="attachment-grid">
+                    <div class="attachment-card">
+                    <label>📸 Pass slip photo</label>
+                    <input type="file" accept="image/">
+                    </div>
+                    <div class="attachment-card">
+                    <label>📄 Report card (Term 1)</label>
+                    <input type="file" accept="image/,application/pdf">
+                    </div>
+                    <div class="attachment-card">
+                    <label>📄 Report card (Term 2)</label>
+                    <input type="file" accept="image/,application/pdf">
+                    </div>
+                    <div class="attachment-card">
+                    <label>📄 Report card (Term 3)</label>
+                    <input type="file" accept="image/,application/pdf">
+                    </div>
+                </div>
+        
+                <!-- terms & submit -->
+                <div class="terms-bar">
+                    <label class="agree-check">
+                    <input type="checkbox" required> I confirm the information provided is true and complete.
+                    </label>
+                    <button type="submit" class="btn-submit"><span>✍️</span> Submit registration</button>
+                </div>
+                <div style="font-size:0.8rem; color:#6082a0; text-align:center;">All sections are demo — no data leaves the form.</div>
+                </form>
+            </div> <!-- end form-card -->
+            </div>
+        
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    <!-- Elfsight WhatsApp Chat |  WhatsApp Live Chat -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-2815f831-4a0b-4a21-8561-170386fdb3c4" data-elfsight-app-lazy></div>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="motto.png" alt="Mbalala Senior Secondary School Mukono_logo">
+                    <p>Preparing students for success in college, career, and life since 1995. Accredited by the National Association of Independent Schools.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admissions</a></li>
+                        <li><a href="#student-life">Student Life</a></li>
+                        <li><a href="#news">News & Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Parent Portal</a></li>
+                        <li><a href="#">Faculty Directory</a></li>
+                        <li><a href="#">School Calendar</a></li>
+                        <li><a href="#">Lunch Menu</a></li>
+                        <li><a href="#">Uniform Policy</a></li>
+                        <li><a href="#">School Handbook</a></li>
+                        <li><a href="#">Employment Opportunities</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 5km Kampala-Jinja Highway<br>Mukono, Mbalala</li>
+                        <li><i class="fas fa-phone-alt"></i> (256) 776-305-962</li>
+                        <li><i class="fas fa-envelope"></i> mbalalassmukono@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 7:30 AM - 4:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Mbalala Senior Secondary School Mukono. All rights reserved. | <a href="#" style="color: rgba(255, 255, 255, 0.8);">Privacy Policy</a> | <a href="#" style="color: rgba(255, 255, 255, 0.8);">Accessibility</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>

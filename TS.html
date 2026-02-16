@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Website Auto Slideshow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            max-width: 800px;
+        }
+        
+        .header h1 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .header h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #f59e0b;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .header p {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        /* Slideshow Container */
+        .slideshow-container {
+            width: 100%;
+            max-width: 1200px;
+            height: 500px;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+        }
+        
+        /* Slides */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: transform 8s ease, opacity 1.5s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Slide Content Overlay */
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            color: white;
+        }
+        
+        .slide-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+        
+        .slide.active .slide-title {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .slide-text {
+            font-size: 1.4rem;
+            max-width: 700px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 1s ease 0.2s, opacity 1s ease 0.2s;
+        }
+        
+        .slide.active .slide-text {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Hidden Progress Indicator (for visual debugging) */
+        .progress-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+        }
+        
+        .slideshow-container:hover .progress-indicator {
+            opacity: 0.6;
+        }
+        
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: background-color 0.5s ease;
+        }
+        
+        .progress-dot.active {
+            background-color: #f59e0b;
+        }
+        
+        /* Instructions Panel */
+        .instructions {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 800px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            border-left: 5px solid #1e40af;
+        }
+        
+        .instructions h2 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions h2 i {
+            color: #f59e0b;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .instructions li {
+            margin-bottom: 12px;
+            padding-left: 8px;
+        }
+        
+        .instructions code {
+            background-color: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+        
+        .instructions .note {
+            background-color: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin-top: 20px;
+        }
+        
+        /* Image Gallery Preview */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            max-width: 1000px;
+        }
+        
+        .image-preview {
+            width: 180px;
+            height: 120px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0.7;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        
+        .image-preview:hover {
+            transform: translateY(-5px);
+            opacity: 1;
+        }
+        
+        .image-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6b7280;
+            font-size: 0.95rem;
+            max-width: 800px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .slideshow-container {
+                height: 450px;
+            }
+            
+            .slide-title {
+                font-size: 2.8rem;
+            }
+            
+            .slide-text {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .slideshow-container {
+                height: 400px;
+            }
+            
+            .slide-title {
+                font-size: 2.2rem;
+            }
+            
+            .slide-text {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+            
+            .slide-overlay {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .slideshow-container {
+                height: 350px;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .slide-text {
+                font-size: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .instructions {
+                padding: 20px;
+            }
+        }
+        
+        /* Animation for new slide entry */
+        @keyframes subtlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+        
+        .slide.active {
+            animation: subtlePulse 20s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>School Website Auto Slideshow</h1>
+        <p>A minimalist, automatic image slideshow with smooth scale transitions. No controls or arrows - perfect for school website banners.</p>
+    </div>
+    
+    <!-- Slideshow Container -->
+    <div class="slideshow-container" id="slideshow">
+        <!-- Slide 1 -->
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+            <div class="slide-overlay">
+                <h2 class="slide-title">Welcome to Our School</h2>
+                <p class="slide-text">A place where students discover their potential and prepare for a bright future</p>
+            </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+            <div class="slide-overlay">
+                <h2 class="slide-title">Inspiring Education</h2>
+                <p class="slide-text">Modern classrooms equipped with technology to enhance learning experiences</p>
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+            <div class="slide-overlay">
+                <h2 class="slide-title">Student Activities</h2>
+                <p class="slide-text">Vibrant extracurricular programs that develop well-rounded individuals</p>
+            </div>
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80');">
+            <div class="slide-overlay">
+                <h2 class="slide-title">State-of-the-Art Facilities</h2>
+                <p class="slide-text">Modern labs, libraries, and sports facilities to support all areas of learning</p>
+            </div>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');">
+            <div class="slide-overlay">
+                <h2 class="slide-title">Community & Values</h2>
+                <p class="slide-text">Building character, fostering relationships, and creating lifelong memories</p>
+            </div>
+        </div>
+        
+        <!-- Hidden Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-dot active"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+        </div>
+    </div>
+    
+    <!-- Instructions -->
+    <div class="instructions">
+        <h2><i class="fas fa-info-circle"></i> How to Use This Slideshow</h2>
+        <ol>
+            <li><strong>Copy the code</strong> - Copy the entire HTML, CSS, and JavaScript below the slideshow container.</li>
+            <li><strong>Paste into your website</strong> - Insert the code where you want the slideshow to appear on your school website.</li>
+            <li><strong>Customize images</strong> - Replace the image URLs in the <code>background-image</code> property of each slide.</li>
+            <li><strong>Update text</strong> - Change the titles and text in each slide's overlay to match your school's messaging.</li>
+            <li><strong>Adjust timing</strong> - Modify the <code>slideInterval</code> variable in the JavaScript to change how long each slide displays (default: 6 seconds).</li>
+        </ol>
+        
+        <div class="note">
+            <p><strong>Note:</strong> This slideshow has no visible controls or arrows as requested. It automatically cycles through images with smooth scale transitions. Images will gently zoom in during display for a subtle, engaging effect.</p>
+        </div>
+        
+        <!-- Image Gallery Preview -->
+        <div class="image-gallery">
+            <div class="image-preview">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="School building">
+            </div>
+            <div class="image-preview">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Classroom">
+            </div>
+            <div class="image-preview">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Students activity">
+            </div>
+            <div class="image-preview">
+                <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="School lab">
+            </div>
+            <div class="image-preview">
+                <img src="https://images.unsplash.com/photo-1524178234883-043d5c3f3cf4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Community">
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Automatic Slideshow for School Websites | No controls, no arrows, clean scale transitions</p>
+        <p>Simply copy and paste into your website. All images are placeholder - replace with your school photos.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all slides and progress dots
+            const slides = document.querySelectorAll('.slide');
+            const progressDots = document.querySelectorAll('.progress-dot');
+            const totalSlides = slides.length;
+            
+            // Configuration
+            let currentSlide = 0;
+            const slideInterval = 6000; // 6 seconds per slide
+            let slideTimer;
+            
+            // Initialize slideshow
+            function initSlideshow() {
+                // Set initial state
+                updateProgressDots();
+                
+                // Start the automatic slideshow
+                startAutoSlideshow();
+                
+                // Optional: Add pause on hover (can be removed if not needed)
+                const slideshowContainer = document.getElementById('slideshow');
+                slideshowContainer.addEventListener('mouseenter', pauseSlideshow);
+                slideshowContainer.addEventListener('mouseleave', resumeSlideshow);
+            }
+            
+            // Move to next slide
+            function nextSlide() {
+                // Hide current slide
+                slides[currentSlide].classList.remove('active');
+                progressDots[currentSlide].classList.remove('active');
+                
+                // Calculate next slide index
+                currentSlide = (currentSlide + 1) % totalSlides;
+                
+                // Show next slide
+                slides[currentSlide].classList.add('active');
+                progressDots[currentSlide].classList.add('active');
+            }
+            
+            // Update progress dots
+            function updateProgressDots() {
+                progressDots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Start automatic slideshow
+            function startAutoSlideshow() {
+                slideTimer = setInterval(nextSlide, slideInterval);
+            }
+            
+            // Pause slideshow on hover (optional feature)
+            function pauseSlideshow() {
+                clearInterval(slideTimer);
+            }
+            
+            // Resume slideshow
+            function resumeSlideshow() {
+                startAutoSlideshow();
+            }
+            
+            // Start the slideshow
+            initSlideshow();
+            
+            // Optional: Keyboard navigation (can be removed for completely control-free experience)
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowRight' || event.key === ' ') {
+                    // Prevent default space bar behavior (scrolling)
+                    if (event.key === ' ') event.preventDefault();
+                    
+                    // Manually trigger next slide
+                    clearInterval(slideTimer);
+                    nextSlide();
+                    startAutoSlideshow();
+                }
+            });
+            
+            // Optional: Touch swipe for mobile (can be removed)
+            let touchStartX = 0;
+            const slideshowContainer = document.getElementById('slideshow');
+            
+            slideshowContainer.addEventListener('touchstart', function(event) {
+                touchStartX = event.changedTouches[0].screenX;
+            });
+            
+            slideshowContainer.addEventListener('touchend', function(event) {
+                const touchEndX = event.changedTouches[0].screenX;
+                const swipeThreshold = 50;
+                
+                // Swipe left - next slide
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    clearInterval(slideTimer);
+                    nextSlide();
+                    startAutoSlideshow();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
