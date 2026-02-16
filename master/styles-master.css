@@ -1,0 +1,62 @@
+/* ---------- responsive ---------- */
+@media screen and (max-width: 950px) {
+    
+}
+
+@media screen and (max-width: 640px) {
+    .header-top {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .main-nav nav {
+        display: none;
+    }
+
+    .main-section-intro h1 {
+        font-size: 2.7rem;
+    }
+
+    .main-section-intro .container {
+        display: block;
+    }
+
+    .main-section-intro img {
+        width: 100%;
+    }
+
+    .main-section-ambition .container {
+        display: block;
+    }
+
+    .main-section-ambition img {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .read-more {
+        width: 120px;
+        padding: 6px;
+        font-size: 0.6rem;
+    }
+
+    .read-more a {
+        font-size: 0.8rem;
+        
+    }
+
+    .section-title h2 {
+        font-size: 2.7rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    
+}

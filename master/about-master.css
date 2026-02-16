@@ -1,0 +1,64 @@
+/* ---------- responsive ---------- */
+@media screen and (max-width: 950px) {
+    
+}
+
+@media screen and (max-width: 640px) {
+    .header-top {
+        display: none;
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .main-nav nav {
+        display: none;
+    }
+
+    .about-hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .main-section-intro h1 {
+        font-size: 2.7rem;
+    }
+
+    .main-section-intro .container {
+        display: block;
+    }
+
+    .main-section-intro img {
+        width: 100%;
+    }
+
+    .school-cards .cards {
+        display: block;
+    }
+
+    .main-section-ambition .container {
+        display: block;
+    }
+
+    .main-section-ambition .container img {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .school-director .container, .head-teacher .container, .deputy-head-teacher .container {
+        display: block;
+    }
+
+    .school-director .container img, .head-teacher .container img, .deputy-head-teacher .container img {
+        width: 100%;
+        border-radius: 8px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    
+}
