@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary: rgb(6, 165, 6);
+    --primary-dark: rgb(3, 122, 3);
+    --secondary: rgb(236, 9, 9);
+    --secondary-dark: rgb(202, 10, 10);
+    --background-color: #f4f4f4;
+    --accent: rgb(255, 230, 0);
+    --accent-dark: rgb(3, 62, 150);
+    --text-color: #333;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --gray: #6c757d;
+    --light-gray: #c4c4c4;
+    --font-family: 'Roboto', sans-serif;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --text: rgb(97, 97, 97);
+    --text-height: 26.6px;
+    --radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.academics-hero {
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url('../images/assembly.JPG') no-repeat;
+    background-size: cover;
+    /* background-attachment: fixed; */
+    background-position: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 100px;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.academics-hero h2 {
+    font-size: 3.8rem;
+    margin-bottom: 10px;
+    float: left;
+}
+
+.uneb-performance .container {
+    /* padding: 60px 0;
+    background-color: var(--light);
+    text-align: center; */
+    display: flex;
+    
+    
+}
+
+.uneb-performance h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    padding: 20px;
+    color: var(--text);
+    flex: 1;
+}
+
+.uneb-performance blockquote {
+    margin: 0 auto;
+    max-width: 500px;
+
+}
